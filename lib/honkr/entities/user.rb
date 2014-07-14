@@ -1,3 +1,6 @@
+require 'digest'
+require 'pry-byebug'
+
 module Honkr
   class User
 
@@ -9,12 +12,17 @@ module Honkr
       @password_digest = password_digest
     end
 
+    # binding.pry
+
     def update_password(password)
       # TODO: Hash incoming password and save as password digest
+      password_digest = Digest::SHA2.hexdigest(password)
+      return password_digest
     end
 
     def has_password?(password)
       # TODO: Hash incoming password and compare against own password_digest
+
     end
   end
 end
