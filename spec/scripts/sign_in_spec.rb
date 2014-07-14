@@ -1,6 +1,6 @@
 require_relative '../spec_helper.rb'
 
-describe Honkr::SignIn, :pending => "Implement password hashing first" do
+describe Honkr::SignIn do
 
   before do
     @user = Honkr::User.new(99, "alice")
@@ -20,6 +20,7 @@ describe Honkr::SignIn, :pending => "Implement password hashing first" do
 
   it "requires the correct password" do
     result = Honkr::SignIn.run(:username => "alice", :password => "diff password")
+
     expect(result[:success?]).to eq false
     expect(result[:error]).to eq :invalid_password
   end
