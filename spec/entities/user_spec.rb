@@ -1,4 +1,5 @@
 require_relative '../spec_helper.rb'
+require 'digest'
 
 describe Honkr::User do
 
@@ -20,14 +21,32 @@ describe Honkr::User do
 
   describe "update_password" do
     it "hashes a password using SHA2" do
-      encypted_password = "b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3"
-      result = @user.update_password("password1234")
+      encrypted_password = Digest::SHA2.hexdigest("cheerios")
+      @user.update_password("cheerios")
 
-      expect(result).to eq(encypted_password)
+      expect(@user.password_digest).to eq(encrypted_password)
     end
   end
 
   describe "has_password?" do
+    context "when the password exists" do
+      it "returns 'true'" do
+        @user.update_password("cheerios")
+        encrypted_password = Digest::SHA2.hexdigest("cheerios")
+        result = @user.has_password?("cheerios")
 
+        expect(result).to eq(true)
+      end
+    end
+
+    context "when the password doesn't exist" do
+      it "returns 'false'" do
+        @user.update_password("chex")
+        encrypted_password = Digest::SHA2.hexdigest("chex")
+        result = @user.has_password?("cheerios")
+
+        expect(result).to eq(false)
+      end
+    end
   end
 end

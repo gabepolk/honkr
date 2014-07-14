@@ -12,17 +12,16 @@ module Honkr
       @password_digest = password_digest
     end
 
-    # binding.pry
-
     def update_password(password)
       # TODO: Hash incoming password and save as password digest
-      password_digest = Digest::SHA2.hexdigest(password)
-      return password_digest
+      @password_digest = Digest::SHA2.hexdigest(password)
     end
+
+    # binding.pry
 
     def has_password?(password)
       # TODO: Hash incoming password and compare against own password_digest
-
+      @password_digest == Digest::SHA2.hexdigest(password)
     end
   end
 end
