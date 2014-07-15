@@ -1,6 +1,6 @@
-require 'spec_helper'
+require_relative '../spec_helper.rb'
 
-describe Honkr::SignIn, :pending => "Implement password hashing first" do
+describe Honkr::SignIn do
 
   before do
     @user = Honkr::User.new(99, "alice")

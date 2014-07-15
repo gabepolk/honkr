@@ -1,4 +1,4 @@
-require 'honkr'
+require_relative '../lib/honkr.rb'
 require 'pry-byebug'
 
 RSpec.configure do |config|
