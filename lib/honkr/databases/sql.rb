@@ -29,7 +29,12 @@ module Honkr
       end
 
       def persist_user(user)
+        ar_user = User.create(password_digest: user.password_digest, username: user.username)
+        user.id = ar_user.id
+      end
 
+      def get_user(user_id)
+        ar_user = User.find_by(id: user_id)
       end
 
       def create_user(attrs)

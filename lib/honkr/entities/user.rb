@@ -3,7 +3,8 @@ require 'digest'
 module Honkr
   class User
 
-    attr_reader :id, :username, :password_digest
+    attr_reader :username, :password_digest
+    attr_accessor :id
 
     def initialize(id, username, password_digest=nil)
       @id = id
