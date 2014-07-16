@@ -1,7 +1,6 @@
-require 'spec_helper'
+require_relative '../spec_helper.rb'
 
 shared_examples 'a database' do
-
   let(:db) { described_class.new }
 
   describe "honks" do

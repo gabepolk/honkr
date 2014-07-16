@@ -8,5 +8,5 @@ end
 # TODO: ESTABLISH ACTIVE RECORD CONNECTION
 ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
-  :database => 'myapp_test'
+  :database => 'honkr_test'
 )
